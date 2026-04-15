@@ -2,6 +2,10 @@ public class Sudoku {
     protected int[][] solvedBoard;
     protected int[][] board = new int[9][9];
     
+    public Sudoku() {
+        this.solvedBoard = generateBoard();
+    }
+    
     public Sudoku(int difficulty) {
         this.solvedBoard = generateBoard();
         generatePuzzle(difficulty);
@@ -16,6 +20,24 @@ public class Sudoku {
             System.out.print("| ");
             for (int j = 0; j < board[i].length; j++) {
                 System.out.print(board[i][j] == 0 ? "-" : board[i][j]);
+                System.out.print(" ");
+                if ((j + 1) % 3 == 0) {
+                    System.out.print("| ");
+                }
+            }
+            if ((i + 1) % 3 == 0) { 
+                System.out.println();
+                System.out.println("+ - - - + - - - + - - - +"); 
+            } else System.out.println();
+        }
+    }
+    
+    public void printSolvedBoard()  {
+        System.out.println("+ - - - + - - - + - - - +");
+        for (int i = 0; i < solvedBoard.length; i++) {
+            System.out.print("| ");
+            for (int j = 0; j < solvedBoard[i].length; j++) {
+                System.out.print(solvedBoard[i][j] == 0 ? "-" : solvedBoard[i][j]);
                 System.out.print(" ");
                 if ((j + 1) % 3 == 0) {
                     System.out.print("| ");
